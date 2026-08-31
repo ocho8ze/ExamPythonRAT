@@ -1,0 +1,42 @@
+[project]
+name = "exampythonrat"
+version = "0.1.0"
+description = "Remote Administration Tool éducatif en Python"
+authors = [
+    {name = "Ibrahimgarni", email = "ibrahimgarni@outlook.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "cryptography>=44.0.0",
+    "mss>=9.0.0",
+    "pynput>=1.7.0",
+    "opencv-python-headless>=4.9.0",
+    "pyaudio>=0.2.14",
+]
+
+[project.scripts]
+rat-server = "exampythonrat.server:main"
+rat-client = "exampythonrat.client:main"
+
+[tool.poetry]
+packages = [{include = "exampythonrat", from = "src"}]
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=8.0.0"
+pre-commit = ">=4.0.0"
+ruff = ">=0.8.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
